@@ -6,11 +6,11 @@ A simple backend application built using **Node.js**, **Express**, and **MongoDB
 
 ## 🔥 Features
 
-- ✅ User Registration
-- ✅ User Login & Logout
-- ✅ Create a Post
-- ✅ Like a Post
-- ✅ Delete a Post
+- ✅ User Registration      
+- ✅ User Login & Logout   
+- ✅ Create a Post         
+- ✅ Like a Post         
+- ✅ Delete a Post      
 
 ---
 

@@ -1,0 +1,29 @@
+{
+  "name": "mini-project-backend",
+  "version": "1.0.0",
+  "description": "A simple backend application built using **Node.js**, **Express**, and **MongoDB** to practice core backend development concepts like user authentication, post management, and basic CRUD operations.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aayush-506/Mini_project-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/aayush-506/Mini_project-Backend/issues"
+  },
+  "homepage": "https://github.com/aayush-506/Mini_project-Backend#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.2"
+  }
+}
