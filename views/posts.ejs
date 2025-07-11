@@ -16,52 +16,62 @@
             <h1 class="text-3xl">Your Posts :</h1>
             <div class="flex gap-2 ">
                 <i class="fas fa-code text-green-400 mt-1"></i>
-                <h1 class="text-base mr-9 ">USERNAME</h1>
+                <h1 class="text-base mr-9 ">
+                    <%=user.username%>
+                </h1>
                 <button class="pb-5 hover:text-red-500 flex items-center gap-2">
-                    <span class="text-xl">Logout</span>
+                    <a href="/logout" class="text-xl">Logout</a>
                     <i class="fas fa-right-from-bracket text-xl"></i>
                 </button>
-
             </div>
         </div>
 
-        <hr class="mb-[8.5vh]">
+        <hr>
+
+        <a class="mb-[8.5vh] block mt-5 ml-9 underline text-yellow-600" href="/createPost">Wanna create new post?</a>
 
         <div class="cards flex flex-wrap gap-8 ml-28">
 
-            <div class="card1 border h-[70vh] w-[22vw] rounded-md">
-                <div class=" imageDIV border m-2 h-[42vh] border-2 rounded-md overflow-hidden">
-                    <img class="h-full w-full object-fit"
-                        src="https://plus.unsplash.com/premium_photo-1669740462444-ba6e0c316b59?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="">
-                </div>
-                <div class="flex justify-between">
-                    <div>
+           <% if (!posts || posts.length === 0) { %>
+    <h1 class="text-white text-2xl">No posts found.</h1>
+  <% }  %>
+
+            <% posts.forEach(post=> { 
+              const isLiked = post.like.includes(user.userID);
+                %>
+                <div class="card1 border h-[70vh] w-[22vw] rounded-md">
+                    <div class="imageDIV border m-2 h-[42vh] border-2 rounded-md overflow-hidden">
+                        <img class="h-full w-full object-cover" src="<%= post.image %>" alt="Post Image">
+                    </div>
+
+                    <div class="flex justify-between">
                         <button
-                            class="text-gray-400 text-3xl hover:text-red-500 ml-4 transition duration-300 ease-in-out">
-                            <i class="fas fa-heart"></i>
+                            class="text-gray-400 text-3xl  <%= isLiked ? 'text-red-500' : 'text-gray-400' %> ml-4 transition duration-300 ease-in-out">
+                            <a href="/like/<%= post._id %>">
+                                <i class="fas fa-heart"></i>
+                            </a>
                         </button>
+                        <div class="mr-4 flex">
+                            <a href="/delete/<%= post._id %>">
+                                <i class="fas fa-trash text-red-400 text-2xl cursor-pointer"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="mr-4 flex gap-5">
-                        <i class="fas fa-edit text-blue-400 text-2xl cursor-pointer"></i>
-                        <i class="fas fa-trash text-red-400 text-2xl cursor-pointer"></i>
 
+                    <div class="mx-3 text-sm ml-5 mt-2">
+                        <p>
+                            <%= post.description %>
+                        </p>
                     </div>
 
+                    <div class="username mt-2 ml-6 text-sm">
+                        <h1 class="text-zinc-500">author: <%= user.username %>
+                        </h1>
+                    </div>
                 </div>
-                <div class="mx-3 text-sm ml-5">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore fugiat non vitae excepturi quia
-                        nihil quaerat totam, suscipit culpa. Ex nisi hic, quaerat iure recusandae eos. Placeat dolorem
-                        quod nisi? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, commodi.
-                    </p>
-                </div>
-                <div class="username mt-2 ml-6 text-sm">
-                    <h1 class="text-zinc-500">author : aayush</h1>
-                </div>
-
-            </div>
-
+                <% }) %>
         </div>
+
 
     </div>
 </body>
